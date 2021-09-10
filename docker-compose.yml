@@ -21,6 +21,12 @@ services:
     environment:
       - TZ=America/Argentina/Buenos_Aires
       - OBSERVIUM_BASE_URL=${OBSERVIUM_BASE_URL}
+      - OBSERVIUM_ADMIN_USER=${OBSERVIUM_ADMIN_USER}
+      - OBSERVIUM_ADMIN_PASS=${OBSERVIUM_ADMIN_PASS}
+      - OBSERVIUM_DB_HOST=${OBSERVIUM_DB_HOST}
+      - OBSERVIUM_DB_NAME=${OBSERVIUM_DB_NAME}
+      - OBSERVIUM_DB_USER=${OBSERVIUM_DB_USER}
+      - OBSERVIUM_DB_PASS=${OBSERVIUM_DB_PASS}
     volumes:
       - ./logs:/opt/observium/logs
       - ./rrd:/opt/observium/rrd
