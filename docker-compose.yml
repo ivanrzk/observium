@@ -20,6 +20,7 @@ services:
     restart: unless-stopped
     environment:
       - TZ=America/Argentina/Buenos_Aires
+      - OBSERVIUM_BASE_URL=${OBSERVIUM_BASE_URL}
     volumes:
       - ./logs:/opt/observium/logs
       - ./rrd:/opt/observium/rrd
