@@ -1,0 +1,35 @@
+- hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+  - hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+  - name: Install SNMP Packages
+    package:
+      name:
+        - snmpd
+      state: present
+    become: true
+
+  - name: Configure SNMP v2c Community
+    lineinfile:
+      path: /etc/snmp/snmpd.conf
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      backrefs: true
+    become: true
+    with_items:
+      - { regexp: 'rocommunity  public default -V systemonly', line: 'rocommunity MiracleDevsSNMP 192.168.2.90' }
+      - { regexp: 'agentaddress*', line: 'agentaddress  udp::161' }
+      - { regexp: 'sysLocation    Sitting on the Dock of the Bay', line: 'sysLocation    aws-us-west-2' }
+      - { regexp: 'sysContact     Me <me@example.org>', line: 'sysContact     devops@equipcast.com' }
+
+  - name: Start SNMP Service
+    service:
+      name: snmpd
+      state: restarted
+    become: true

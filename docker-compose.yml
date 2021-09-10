@@ -1,0 +1,36 @@
+# Docker compose file for Observium
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.6.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - TZ=America/Argentina/Buenos_Aires
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      - observium-network
+    restart: unless-stopped
+  app:
+    image: observium:latest
+    restart: unless-stopped
+    environment:
+      - TZ=America/Argentina/Buenos_Aires
+    volumes:
+      - ./logs:/opt/observium/logs
+      - ./rrd:/opt/observium/rrd
+    networks:
+      - observium-network
+    ports:
+      - "888:80"
+    restart: always
+    depends_on:
+      - db
+
+networks:
+  observium-network:
+      driver: bridge
