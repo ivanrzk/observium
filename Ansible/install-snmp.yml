@@ -23,7 +23,7 @@
       backrefs: true
     become: true
     with_items:
-      - { regexp: 'rocommunity  public default -V systemonly', line: 'rocommunity MiracleDevsSNMP 192.168.2.90' }
+      - { regexp: 'rocommunity  public default -V systemonly', line: 'rocommunity {COMMUNITY} {IP que permito}' }
       - { regexp: 'agentaddress*', line: 'agentaddress  udp::161' }
       - { regexp: 'sysLocation    Sitting on the Dock of the Bay', line: 'sysLocation    aws-us-west-2' }
       - { regexp: 'sysContact     Me <me@example.org>', line: 'sysContact     devops@equipcast.com' }

@@ -1,0 +1,24 @@
+- hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+  - hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+  - name: Generate image
+    ansible.builtin.command: docker-compose build
+    args:
+      chdir: ./build/
+    environment:
+      - OBSERVIUM_DB_HOST: "{{ OBSERVIUM_DB_HOST }}"
+      - OBSERVIUM_DB_USER: "{{ OBSERVIUM_DB_USER }}"
+      - OBSERVIUM_DB_PASS: "{{ OBSERVIUM_DB_PASS }}"
+      - OBSERVIUM_DB_NAME: "{{ OBSERVIUM_DB_NAME }}"
+      - OBSERVIUM_SNMP_COMMUNITY: "{{ OBSERVIUM_SNMP_COMMUNITY }}"
+  - name: Run compose
+    ansible.builtin.command: docker-compose up -d
+    args:
+      chdir: ./

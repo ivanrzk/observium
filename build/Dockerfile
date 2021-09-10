@@ -1,34 +1,5 @@
 # Docker container for Observium Community Edition
 #
-# It requires option of e.g. '--link observiumdb:observiumdb' with another MySQL or MariaDB container.
-# Example usage:
-# 1. MySQL or MariaDB container
-#    $ mkdir -p /home/docker/observium/data
-#    $ docker run --name observiumdb \
-#        -v /home/docker/observium/data:/var/lib/mysql \
-#        -e MYSQL_ROOT_PASSWORD=passw0rd \
-#        -e MYSQL_USER=observium \
-#        -e MYSQL_PASSWORD=passw0rd \
-#        -e MYSQL_DATABASE=observium \
-#        mariadb
-#
-# 2. This Observium container
-#    $ mkdir -p /home/docker/observium/logs /home/docker/observium/rrd
-#    $ docker run --name observiumapp --link observiumdb:observiumdb \
-#        -v /home/docker/observium/logs:/opt/observium/logs \
-#        -v /home/docker/observium/rrd:/opt/observium/rrd \
-#        -e OBSERVIUM_ADMIN_USER=admin \
-#        -e OBSERVIUM_ADMIN_PASS=passw0rd \
-#        -e OBSERVIUM_DB_HOST=observiumdb \
-#        -e OBSERVIUM_DB_USER=observium \
-#        -e OBSERVIUM_DB_PASS=passw0rd \
-#        -e OBSERVIUM_DB_NAME=observium \
-#        -e OBSERVIUM_BASE_URL=http://yourserver.yourdomain:80 \
-#        -p 8888:80 mbixtech/observium
-#
-# References:
-#  - Follow platform guideline specified in https://github.com/docker-library/official-images
-# 
 
 FROM ubuntu:20.04
 
