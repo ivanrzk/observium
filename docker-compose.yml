@@ -17,6 +17,16 @@ services:
     restart: unless-stopped
   app:
     image: observium:latest
+    build:
+      context: ./
+      dockerfile: ./build/Dockerfile
+      args:
+        OBSERVIUM_ADMIN_USER: ${OBSERVIUM_ADMIN_USER}
+        OBSERVIUM_ADMIN_PASS: ${OBSERVIUM_ADMIN_PASS}
+        OBSERVIUM_DB_HOST: ${OBSERVIUM_DB_HOST}
+        OBSERVIUM_DB_NAME: ${OBSERVIUM_DB_NAME}
+        OBSERVIUM_DB_USER: ${OBSERVIUM_DB_USER}
+        OBSERVIUM_DB_PASS: ${OBSERVIUM_DB_PASS}
     restart: unless-stopped
     environment:
       - TZ=America/Argentina/Buenos_Aires
