@@ -92,7 +92,7 @@ RUN cd /opt/observium && \
     echo "\$config['bad_if'] = \"docker\";" >> config.php && \
     echo "\$config['bad_if'] = \"br-\";" >> config.php
 
-COPY observium-init.sh /opt/observium/observium-init.sh
+COPY build/observium-init.sh /opt/observium/observium-init.sh
 
 RUN chmod a+x /opt/observium/observium-init.sh && \
     chown -R www-data:www-data /opt/observium
@@ -115,16 +115,16 @@ RUN a2dismod mpm_event && \
     sed -i -e "s/\${APACHE_LOG_DIR}\//\/opt\/observium\/logs\/apache2-/g" /etc/apache2/apache2.conf
 
 # configure cron and logrotate
-COPY logrotate-conf /etc/logrotate.conf
-COPY logrotate-cron /etc/cron.d/logrotate
-COPY observium-cron /etc/cron.d/observium
+COPY build/logrotate-conf /etc/logrotate.conf
+COPY build/logrotate-cron /etc/cron.d/logrotate
+COPY build/observium-cron /etc/cron.d/observium
 RUN chmod 644 /etc/logrotate.conf /etc/cron.d/logrotate /etc/cron.d/observium
 
 # configure working directory
 WORKDIR /opt/observium
 
 # configure entry point
-COPY supervisord.conf /etc/supervisord.conf
+COPY build/supervisord.conf /etc/supervisord.conf
 ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
 
 # expose tcp port
