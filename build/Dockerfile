@@ -106,7 +106,7 @@ RUN [ -f /opt/observium/VERSION ] && cat /opt/observium/VERSION
 RUN phpenmod mcrypt
 
 # configure apache configuration and modules
-COPY observium-apache24 /etc/apache2/sites-available/000-default.conf
+COPY build/observium-apache24 /etc/apache2/sites-available/000-default.conf
 RUN a2dismod mpm_event && \
     a2enmod mpm_prefork && \
     a2enmod php7.4 && \
