@@ -19,7 +19,7 @@ services:
     image: observium:latest
     build:
       context: ./
-      dockerfile: ./build/Dockerfile
+      dockerfile: ./Dockerfile
       args:
         OBSERVIUM_ADMIN_USER: ${OBSERVIUM_ADMIN_USER}
         OBSERVIUM_ADMIN_PASS: ${OBSERVIUM_ADMIN_PASS}

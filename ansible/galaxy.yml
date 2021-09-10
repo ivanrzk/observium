@@ -1,0 +1,12 @@
+---
+collections:
+  - name: community.aws
+  - name: community.docker
+  - name: community.mysql
+  - name: community.general
+roles:
+  - name: geerlingguy.swap
+  - name: kwoodson.yedit
+  - name: ocha.dotnet-core
+  - name: cloudalchemy.node_exporter
+  - name: community.docker.docker_container
