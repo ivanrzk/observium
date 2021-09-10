@@ -88,8 +88,8 @@ RUN cd /opt/observium && \
     sed -i -e "s/= 'PASSWORD';/= getenv('OBSERVIUM_DB_PASS');/g" config.php && \
     sed -i -e "s/= 'observium';/= getenv('OBSERVIUM_DB_NAME');/g" config.php && \
     sed -i -e "s/= array(\"public\");/= getenv('OBSERVIUM_SNMP_COMMUNITY');/g" config.php && \
-    echo "\$config['base_url'] = getenv('OBSERVIUM_BASE_URL');" >> config.php \
-    echo "\$config['bad_if'] = \"docker\";" >> config.php \
+    echo "\$config['base_url'] = getenv('OBSERVIUM_BASE_URL');" >> config.php && \
+    echo "\$config['bad_if'] = \"docker\";" >> config.php && \
     echo "\$config['bad_if'] = \"br-\";" >> config.php
 
 COPY observium-init.sh /opt/observium/observium-init.sh
