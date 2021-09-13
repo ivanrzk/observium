@@ -1,0 +1,13 @@
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+ansible-galaxy collection install -r galaxy.yml
+
+eval $(ssh-agent)
+chmod 0400 ../default-key.pub
+
+ssh-add ../default-key.pub
+ansible -m ping -i inventory.ini all
+ansible-playbook install-observium.yml --check
+ansible-playbook install-snmp.yml --check
