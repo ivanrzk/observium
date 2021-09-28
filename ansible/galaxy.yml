@@ -1,6 +1,0 @@
----
-collections:
-  - name: community.docker
-  - name: community.general
-roles:
-  - name: community.docker.docker_container
