@@ -28,7 +28,7 @@ else
   sleep 5
 fi
 
-echo "export OBSERVIUM_ADMIN_USER=$OBSERVIUM_ADMIN_USER" >> /opt/observium/observium-setenv.sh
+echo "export OBSERVIUM_ADMIN_USER=$OBSERVIUM_ADMIN_USER" > /opt/observium/observium-setenv.sh
 echo "export OBSERVIUM_ADMIN_PASS=$OBSERVIUM_ADMIN_PASS" >> /opt/observium/observium-setenv.sh
 echo "export OBSERVIUM_DB_HOST=$OBSERVIUM_DB_HOST" >> /opt/observium/observium-setenv.sh
 echo "export OBSERVIUM_DB_USER=$OBSERVIUM_DB_USER" >> /opt/observium/observium-setenv.sh
