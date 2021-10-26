@@ -34,5 +34,6 @@ echo "export OBSERVIUM_DB_HOST=$OBSERVIUM_DB_HOST" >> /opt/observium/observium-s
 echo "export OBSERVIUM_DB_USER=$OBSERVIUM_DB_USER" >> /opt/observium/observium-setenv.sh
 echo "export OBSERVIUM_DB_PASS=$OBSERVIUM_DB_PASS" >> /opt/observium/observium-setenv.sh
 echo "export OBSERVIUM_DB_NAME=$OBSERVIUM_DB_NAME" >> /opt/observium/observium-setenv.sh
+echo "OBSERVIUM_BASE_URL=$OBSERVIUM_BASE_URL" >> /opt/observium/observium-setenv.sh
 
 exit 0
